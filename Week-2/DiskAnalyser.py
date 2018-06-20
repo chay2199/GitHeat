@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 ####################################For Linux###############################
                 
-if(platform.system()=='Linux'):
+if(platform.system() == 'Linux'):
     
     
     print('Enter -1 to kill the program or -2 to know ' 
@@ -28,9 +28,9 @@ if(platform.system()=='Linux'):
     print('You are currently in "/"')
     print('##################################################')
     print('These are all the files and folders in your system: ')
-    index=0
-    dirlist=[]
-    pathName='/'
+    index = 0
+    dirlist = []
+    pathName = '/'
 
     try:
         for x in os.listdir(pathName):
@@ -39,38 +39,38 @@ if(platform.system()=='Linux'):
             elif os.path.isdir(x): print (index,"  ",'d-', x)
             elif os.path.islink(x): print (index,"  ",'l-', x)
             else: print (index,"  ", x)
-            index=index+1
-        choice=int(input())
+            index = index + 1
+        choice = int(input())
 
     except NotADirectoryError:
         print('Oops the index you have selected is of a file. You can try again!!')
 
         statinfo = os.stat(pathName[:-1])
-        fileSize=statinfo.st_size/(1000000)
+        fileSize = statinfo.st_size/(1000000)
         print('Your file size in MB: ',fileSize)
 
         print('Enter -1 to kill the program or -2 to know ' 
           'the details about that folder or -3 to go back '
           'in the parent directory or the index number '
           'to further enter in a directory.')
-        choice=int(input())
+        choice = int(input())
 
 
-    if(choice==-3):
+    if(choice == -3):
         print('You are currently in the root directory. You cannot go back.')
         print('Enter -1 to kill the program or -2 to know ' 
           'the details about that folder or -3 to go back '
           'in the parent directory or the index number '
           'to further enter in a directory.')
-        choice=int(input())
+        choice = int(input())
 
 
 
 
-    if(choice==-2):
+    if(choice == -2):
         try:
-            stat= os.statvfs(pathName)
-            freeSpace=stat.f_bfree*stat.f_bsize/(1000000)
+            stat = os.statvfs(pathName)
+            freeSpace = stat.f_bfree*stat.f_bsize/(1000000)
 
             folder = pathName
             folder_size = 0
@@ -87,7 +87,7 @@ if(platform.system()=='Linux'):
                               'the details about that folder or -3 to go back '
                               'in the parent directory or the index number '
                               'to further enter in a directory.')
-                        choice=int(input())
+                        choice = int(input())
 
                     except PermissionError:
                         print('Oops permission eroor! You dont have the permission to access '
@@ -97,14 +97,15 @@ if(platform.system()=='Linux'):
                               'the details about that folder or -3 to go back '
                               'in the parent directory or the index number '
                               'to further enter in a directory.')
-                        choice=int(input())
+                        choice = int(input())
 
-            folderSize=folder_size/1000000
+            folderSize = folder_size/1000000
 
             labels = 'Used Space', 'Free Space'
             sizes = [folderSize, freeSpace]
-            cols=['r', 'g']
-            plt.pie(sizes, labels = labels, colors=cols, shadow = True, explode = (0, 0.075), autopct='%1.2f%%')
+            cols = ['r', 'g']
+            plt.pie(sizes, labels = labels, colors=cols, shadow = True,
+                    explode = (0, 0.075), autopct='%1.2f%%')
 
             print('Your directory is: ',pathName)
             print('Details of the current directory are: ')
@@ -112,7 +113,7 @@ if(platform.system()=='Linux'):
             print('Used Space in MB: ',folderSize," ",'Free Space in MB: ',freeSpace)
             plt.show()
 
-            choice=int(input())
+            choice = int(input())
 
         except NotADirectoryError:
                 print('The index you have selected is of a file.')
@@ -123,26 +124,26 @@ if(platform.system()=='Linux'):
                         filename = os.path.join(path, file)
                         folder_size += os.path.getsize(filename)
 
-                folderSize=folder_size/(1000000)
+                folderSize = folder_size/(1000000)
                 print('Your file size in MB: ',folderSize)
 
 
-                choice=int(input())
+                choice = int(input())
 
 
 
-    while(choice!=-1):
+    while(choice != -1):
 
-        if(choice==-3):
+        if(choice == -3):
                 print('You are currently in the root directory.')
                 print('Enter -1 to kill the program or -2 to know ' 
                       'the details about that folder or -3 to go back '
                       'in the parent directory or the index number '
                       'to further enter in a directory.')
 
-                index=0
-                dirlist=[]
-                pathName='/'
+                index = 0
+                dirlist = []
+                pathName = '/'
 
                 try:
                     for x in os.listdir(pathName):
@@ -152,7 +153,7 @@ if(platform.system()=='Linux'):
                         elif os.path.islink(x): print (index,"  ",'l-', x)
                         else: print (index,"  ", x)
                         index=index+1
-                    choice=int(input())
+                    choice = int(input())
 
                 except NotADirectoryError:
                     print('Oops the index you have selected is of a file. You can try again!!')
@@ -160,15 +161,15 @@ if(platform.system()=='Linux'):
                       'the details about that folder or -3 to go back '
                       'in the parent directory or the index number '
                       'to further enter in a directory.')
-                    choice=int(input())
+                    choice = int(input())
 
 
 
 
-        if(choice==-2):
+        if(choice == -2):
             try:
-                stat= os.statvfs(pathName)
-                freeSpace=stat.f_bfree*stat.f_bsize/(1000000)
+                stat = os.statvfs(pathName)
+                freeSpace = stat.f_bfree*stat.f_bsize/(1000000)
 
 
 
@@ -187,7 +188,7 @@ if(platform.system()=='Linux'):
                                   'the details about that folder or -3 to go back '
                                   'in the parent directory or the index number '
                                   'to further enter in a directory.')
-                            choice=int(input())
+                            choice = int(input())
 
                         except PermissionError:
                             print('Oops permission eroor! You dont have the permission to access '
@@ -197,14 +198,14 @@ if(platform.system()=='Linux'):
                                   'the details about that folder or -3 to go back '
                                   'in the parent directory or the index number '
                                   'to further enter in a directory.')
-                            choice=int(input())
+                            choice = int(input())
 
-                folderSize=folder_size/(1000000)
+                folderSize = folder_size/(1000000)
 
                 labels = 'Used Space', 'Free Space'
                 sizes = [folderSize, freeSpace]
-                cols=['r', 'g']
-                plt.pie(sizes, labels = labels, colors=cols, shadow = True,
+                cols = ['r', 'g']
+                plt.pie(sizes, labels = labels, colors = cols, shadow = True,
                         explode = (0, 0.075), autopct='%1.2f%%')
                 print('Your directory is: ',pathName)
                 print('Details of the current directory are: ')
@@ -213,22 +214,22 @@ if(platform.system()=='Linux'):
                 plt.show()
 
 
-                choice=int(input())
+                choice = int(input())
 
             except NotADirectoryError:
                 print('The index you have selected is of a file.')
                 statinfo = os.stat(pathName[:-1])
-                fileSize=statinfo.st_size/(1000000)
+                fileSize = statinfo.st_size/(1000000)
                 print('Your file size in MB: ',fileSize)
 
 
-                choice=int(input())
+                choice = int(input())
 
 
-        if(choice>=0):
-            index=0
-            pathName=pathName+str(dirlist[choice])+'/'
-            dirlist=[]
+        if(choice >= 0):
+            index = 0
+            pathName = pathName + str(dirlist[choice]) + '/'
+            dirlist = []
             print('You are currently in ',pathName)
             print('#####################################')
             print('#####################################')
@@ -244,7 +245,7 @@ if(platform.system()=='Linux'):
                     elif os.path.isdir(x): print (index,"  ",'d-', x)
                     elif os.path.islink(x): print (index,"  ",'l-', x)
                     else: print (index,"  ", x)
-                    index=index+1
+                    index = index+1
                 print('Enter -1 to kill the program or -2 to know ' 
                       'the details about that folder or -3 to go back '
                       'in the parent directory or the index number '
@@ -253,7 +254,7 @@ if(platform.system()=='Linux'):
                 print('##################################################')
                 print('##################################################')
                 print('##################################################')
-                choice=int(input())
+                choice = int(input())
 
             except NotADirectoryError:
                 print('Oops the index you have selected is of a file. You can try again!!')
@@ -265,12 +266,12 @@ if(platform.system()=='Linux'):
                 print('Enter -1 to kill the program or -2 to know ' 
                       'the details about that folder or the index number '
                       'to further enter in a directory.')
-                choice=int(input())
+                choice = int(input())
 
 
 ########################################FOR WINDOWS#################            
 
-elif(platform.system()=='Windows'):
+elif(platform.system() == 'Windows'):
     
     
     import win32api
@@ -280,7 +281,7 @@ elif(platform.system()=='Windows'):
     drives = win32api.GetLogicalDriveStrings()
     drives = drives.split('\000')[:-1]
 
-    windowsDrives=[]
+    windowsDrives = []
     for drive in drives:
         windowsDrives.append(drive[:-1])
     
@@ -288,21 +289,21 @@ elif(platform.system()=='Windows'):
     print('Please enter a number to choose your parent directory')
     print('REMEMEBER the index starts from zero')
     
-    dir=int(input())
+    dir = int(input())
     
-    if(dir<len(windowsDrives)):
-        parentDir=windowsDrives[dir]+'/'
-        pathName=windowsDrives[dir]+'/'
+    if(dir < len(windowsDrives)):
+        parentDir = windowsDrives[dir] + '/'
+        pathName = windowsDrives[dir] + '/'
     else:
-        while(dir>=len(windowsDrives)):
+        while(dir >= len(windowsDrives)):
             print('Invalid parent directory. Please try again!')
             print('These are the drives in your system: ',windowsDrives)
             print('Please enter a number to choose your parent directory')
             print('REMEMEBER the index starts from zero')
 
-            dir=int(input())
-        parentDir=windowsDrives[dir]+'/'
-        pathName=windowsDrives[dir]+'/'
+            dir = int(input())
+        parentDir = windowsDrives[dir] + '/'
+        pathName = windowsDrives[dir] + '/'
         
     
     
@@ -315,8 +316,8 @@ elif(platform.system()=='Windows'):
     print('You are currently in this directory: ', pathName)
     print('##################################################')
     print('These are all the files and folders in your system: ')
-    index=0
-    dirlist=[]
+    index = 0
+    dirlist = []
     try:
         for x in os.listdir(pathName):
             dirlist.append(x)
@@ -324,43 +325,43 @@ elif(platform.system()=='Windows'):
             elif os.path.isdir(x): print (index,"  ",'d-', x)
             elif os.path.islink(x): print (index,"  ",'l-', x)
             else: print (index,"  ", x)
-            index=index+1
-        choice=int(input())
+            index = index+1
+        choice = int(input())
 
     except NotADirectoryError:
         print('Oops the index you have selected is of a file. You can try again!!')
 
         statinfo = os.stat(pathName[:-1])
-        fileSize=statinfo.st_size/(1000000)
+        fileSize = statinfo.st_size/(1000000)
         print('Your file size in MB: ',fileSize)
 
         print('Enter -1 to kill the program or -2 to know ' 
               'the details about that folder or -3 to go back '
               'to the parent directory or -4 to change parent'
               ' directory.')
-        choice=int(input())
+        choice = int(input())
 
     
-    if(choice==-4):
+    if(choice == -4):
         print('These are the drives in your system: ',windowsDrives)
         print('Please enter a number to choose your parent directory')
         print('REMEMEBER the index starts from zero')
 
-        dir=int(input())
+        dir = int(input())
 
-        if(dir<len(windowsDrives)):
-            parentDir=windowsDrives[dir]+'/'
-            pathName=windowsDrives[dir]+'/'
+        if(dir < len(windowsDrives)):
+            parentDir = windowsDrives[dir] + '/'
+            pathName = windowsDrives[dir] + '/'
         else:
-            while(dir>=len(windowsDrives)):
+            while(dir >= len(windowsDrives)):
                 print('Invalid parent directory. Please try again!')
                 print('These are the drives in your system: ',windowsDrives)
                 print('Please enter a number to choose your parent directory')
                 print('REMEMEBER the index starts from zero')
 
-                dir=int(input())
-            parentDir=windowsDrives[dir]+'/'
-            pathName=windowsDrives[dir]+'/'
+                dir = int(input())
+            parentDir = windowsDrives[dir] + '/'
+            pathName = windowsDrives[dir] + '/'
 
 
 
@@ -374,8 +375,8 @@ elif(platform.system()=='Windows'):
         print('##################################################')
         print('These are all the files and folders in your system: ')
         
-        index=0
-        dirlist=[]
+        index = 0
+        dirlist = []
         try:
             for x in os.listdir(pathName):
                 dirlist.append(x)
@@ -383,36 +384,36 @@ elif(platform.system()=='Windows'):
                 elif os.path.isdir(x): print (index,"  ",'d-', x)
                 elif os.path.islink(x): print (index,"  ",'l-', x)
                 else: print (index,"  ", x)
-                index=index+1
-            choice=int(input())
+                index = index+1
+            choice = int(input())
 
         except NotADirectoryError:
             print('Oops the index you have selected is of a file. You can try again!!')
 
             statinfo = os.stat(pathName[:-1])
-            fileSize=statinfo.st_size/(1000000)
+            fileSize = statinfo.st_size/(1000000)
             print('Your file size in MB: ',fileSize)
 
             print('Enter -1 to kill the program or -2 to know ' 
                   'the details about that folder or -3 to go back '
                   'to the parent directory or -4 to change parent'
                   ' directory.')
-            choice=int(input())
+            choice = int(input())
         
     
-    if(choice==-3):
+    if(choice == -3):
         print('You are currently in the parent directory. You cannot go back.')
         print('Enter -1 to kill the program or -2 to know ' 
           'the details about that folder or the index number '
           'to further enter in a directory or -4 to change your parent directory.')
-        choice=int(input())
+        choice = int(input())
 
 
 
 
-    if(choice==-2):
+    if(choice == -2):
         try:
-            freeSpace=psutil.disk_usage(pathName).free/1000000
+            freeSpace = psutil.disk_usage(pathName).free/1000000
 
             folder = pathName
             folder_size = 0
@@ -429,7 +430,7 @@ elif(platform.system()=='Windows'):
                               'the details about that folder or -3 to go back '
                               'to the parent directory or -4 to change parent'
                               ' directory.')
-                        choice=int(input())
+                        choice = int(input())
 
                     except PermissionError:
                         print('Oops permission error! You dont have the permission to access '
@@ -439,14 +440,15 @@ elif(platform.system()=='Windows'):
                               'the details about that folder or -3 to go back '
                               'to the parent directory or -4 to change parent'
                               ' directory.')
-                        choice=int(input())
+                        choice = int(input())
 
-            folderSize=folder_size/1000000
+            folderSize = folder_size/1000000
 
             labels = 'Used Space', 'Free Space'
             sizes = [folderSize, freeSpace]
-            cols=['r', 'g']
-            plt.pie(sizes, labels = labels, colors=cols, shadow = True, explode = (0, 0.075), autopct='%1.2f%%')
+            cols = ['r', 'g']
+            plt.pie(sizes, labels = labels, colors=cols, shadow = True,
+                    explode = (0, 0.075), autopct='%1.2f%%')
 
             print('Your directory is: ',pathName)
             print('Details of the current directory are: ')
@@ -454,7 +456,7 @@ elif(platform.system()=='Windows'):
             print('Used Space in MB: ',folderSize," ",'Free Space in MB: ',freeSpace)
             plt.show()
 
-            choice=int(input())
+            choice = int(input())
 
         except NotADirectoryError:
                 print('The index you have selected is of a file.')
@@ -469,33 +471,33 @@ elif(platform.system()=='Windows'):
                 print('Your file size in MB: ',folderSize)
 
 
-                choice=int(input())
+                choice = int(input())
 
 
 
-    while(choice!=-1):
+    while(choice != -1):
         
         
-        if(choice==-4):
+        if(choice == -4):
             print('These are the drives in your system: ',windowsDrives)
             print('Please enter a number to choose your parent directory')
             print('REMEMEBER the index starts from zero')
 
-            dir=int(input())
+            dir = int(input())
 
-            if(dir<len(windowsDrives)):
-                pathName=windowsDrives[dir]+'/'
-                parentDir=windowsDrives[dir]+'/'
+            if(dir < len(windowsDrives)):
+                pathName = windowsDrives[dir] + '/'
+                parentDir = windowsDrives[dir] + '/'
             else:
-                while(dir>=len(windowsDrives)):
+                while(dir >= len(windowsDrives)):
                     print('Invalid parent directory. Please try again!')
                     print('These are the drives in your system: ',windowsDrives)
                     print('Please enter a number to choose your parent directory')
                     print('REMEMEBER the index starts from zero')
 
-                    dir=int(input())
-                pathName=windowsDrives[dir]+'/'
-                parentDir=windowsDrives[dir]+'/'
+                    dir = int(input())
+                pathName = windowsDrives[dir] + '/'
+                parentDir = windowsDrives[dir] + '/'
 
 
 
@@ -509,8 +511,8 @@ elif(platform.system()=='Windows'):
             print('##################################################')
             print('These are all the files and folders in your system: ')
             
-            index=0
-            dirlist=[]
+            index = 0
+            dirlist = []
             try:
                 for x in os.listdir(pathName):
                     dirlist.append(x)
@@ -518,23 +520,23 @@ elif(platform.system()=='Windows'):
                     elif os.path.isdir(x): print (index,"  ",'d-', x)
                     elif os.path.islink(x): print (index,"  ",'l-', x)
                     else: print (index,"  ", x)
-                    index=index+1
-                choice=int(input())
+                    index = index+1
+                choice = int(input())
 
             except NotADirectoryError:
                 print('Oops the index you have selected is of a file. You can try again!!')
 
                 statinfo = os.stat(pathName[:-1])
-                fileSize=statinfo.st_size/(1000000)
+                fileSize = statinfo.st_size/(1000000)
                 print('Your file size in MB: ',fileSize)
 
                 print('Enter -1 to kill the program or -2 to know ' 
                       'the details about that folder or -3 to go back '
                       'to the parent directory or -4 to change parent'
                       ' directory.')
-                choice=int(input())
+                choice = int(input())
 
-        if(choice==-3):
+        if(choice == -3):
                 print('You are currently in the parent directory.')
                 print('Enter -1 to kill the program or -2 to know ' 
                       'the details about that folder or -3 to go back '
@@ -542,9 +544,9 @@ elif(platform.system()=='Windows'):
                       ' parent directory or the index number '
                       'to further enter in a directory.')
 
-                index=0
-                dirlist=[]
-                pathName=parentDir
+                index = 0
+                dirlist = []
+                pathName = parentDir
 
                 try:
                     for x in os.listdir(pathName):
@@ -553,22 +555,22 @@ elif(platform.system()=='Windows'):
                         elif os.path.isdir(x): print (index,"  ",'d-', x)
                         elif os.path.islink(x): print (index,"  ",'l-', x)
                         else: print (index,"  ", x)
-                        index=index+1
-                    choice=int(input())
+                        index = index+1
+                    choice = int(input())
 
                 except NotADirectoryError:
                     print('Oops the index you have selected is of a file. You can try again!!')
                     print('Enter -1 to kill the program or -2 to know ' 
                       'the details about that folder or -3 to go back '
                       'in the parent directory.')
-                    choice=int(input())
+                    choice = int(input())
 
 
 
 
-        if(choice==-2):
+        if(choice == -2):
             try:
-                freeSpace=psutil.disk_usage(pathName).free/1000000
+                freeSpace = psutil.disk_usage(pathName).free/1000000
                 
                 folder = pathName
                 folder_size = 0
@@ -585,7 +587,7 @@ elif(platform.system()=='Windows'):
                                   'the details about that folder or -3 to go back '
                                   'to the parent directory or -4 to change parent'
                                   ' directory.')
-                            choice=int(input())
+                            choice = int(input())
 
                         except PermissionError:
                             print('Oops permission error! You dont have the permission to access '
@@ -595,13 +597,13 @@ elif(platform.system()=='Windows'):
                                   'the details about that folder or -3 to go back '
                                   'to the parent directory or -4 to change parent'
                                   ' directory.')
-                            choice=int(input())
+                            choice = int(input())
 
-                folderSize=folder_size/(1000000)
+                folderSize = folder_size/(1000000)
 
                 labels = 'Used Space', 'Free Space'
                 sizes = [folderSize, freeSpace]
-                cols=['r', 'g']
+                cols = ['r', 'g']
                 plt.pie(sizes, labels = labels, colors=cols, shadow = True,
                         explode = (0, 0.075), autopct='%1.2f%%')
                 print('Your directory is: ',pathName)
@@ -611,7 +613,7 @@ elif(platform.system()=='Windows'):
                 plt.show()
 
 
-                choice=int(input())
+                choice = int(input())
 
             except NotADirectoryError:
                 print('The index you have selected is of a file.')
@@ -620,13 +622,13 @@ elif(platform.system()=='Windows'):
                 print('Your file size in MB: ',fileSize)
 
 
-                choice=int(input())
+                choice = int(input())
 
 
-        if(choice>=0):
-            index=0
-            pathName=pathName+str(dirlist[choice])+'/'
-            dirlist=[]
+        if(choice >= 0):
+            index = 0
+            pathName = pathName+str(dirlist[choice]) + '/'
+            dirlist = []
             print('You are currently in ',pathName)
             print('#####################################')
             print('#####################################')
@@ -642,7 +644,7 @@ elif(platform.system()=='Windows'):
                     elif os.path.isdir(x): print (index,"  ",'d-', x)
                     elif os.path.islink(x): print (index,"  ",'l-', x)
                     else: print (index,"  ", x)
-                    index=index+1
+                    index = index+1
                 print('Enter -1 to kill the program or -2 to know ' 
                       'the details about that folder or -3 to go back '
                       'to the parent directory or -4 to change parent'
@@ -652,19 +654,19 @@ elif(platform.system()=='Windows'):
                 print('##################################################')
                 print('##################################################')
                 print('##################################################')
-                choice=int(input())
+                choice = int(input())
 
             except NotADirectoryError:
                 print('Oops the index you have selected is of a file. You can try again!!')
 
                 statinfo = os.stat(pathName[:-1])
-                fileSize=statinfo.st_size/(1000000)
+                fileSize = statinfo.st_size/(1000000)
                 print('Your file size in MB: ',fileSize)
 
                 print('Enter -1 to kill the program or -2 to know ' 
                       'the details about that folder or -3 to go back to the root directory'
                       ' or -4 to change the parent directory')
-                choice=int(input())
+                choice = int(input())
 
 
 
