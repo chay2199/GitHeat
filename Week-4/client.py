@@ -1,16 +1,11 @@
-# client.py
 import os
-import socket  # Import socket module
-
-# s.send(("Hello server!").encode())
-
-
+import socket
 class Client():
 
     def receiveFile(self):
-        s = socket.socket()  # Create a socket object
-        host = socket.gethostname()  # Get local machine name
-        port = 60002  # Reserve a port for your service.
+        s = socket.socket()  
+        host = socket.gethostname() 
+        port = 60002 
         s.connect((host, port))
         recfile = input()
         s.send(str.encode(recfile))
@@ -24,11 +19,10 @@ class Client():
                     print('receiving data...')
                     data = s.recv(1024)
                     totalRecv += len(data)
-                    #print(('data=%s', (data)))
+             
                     print("{0:.2f}".format((totalRecv / float(filesize)) * 100) + "% Done")
                     if not data:
                         break
-                    # write data to a file
                     f.write(data)
 
             f.close()
@@ -42,9 +36,9 @@ class Client():
 
 
     def receiveDirInfo(self):
-        s = socket.socket()  # Create a socket object
-        host = socket.gethostname()  # Get local machine name
-        port = 60001  # Reserve a port for your service.
+        s = socket.socket()
+        host = socket.gethostname() 
+        port = 60001  
         s.connect((host, port))
         print('Receiving directory information....')
         with open('dir_info.txt', 'w') as f:
@@ -52,7 +46,6 @@ class Client():
                 list = s.recv(1024).decode()
                 if not list:
                     break
-                # write data to a file
                 f.write(list)
 
         f.close()
@@ -60,9 +53,9 @@ class Client():
         print(dir_info.read())
         s.close()
 
-        s = socket.socket()  # Create a socket object
-        host = socket.gethostname()  # Get local machine name
-        port = 60002  # Reserve a port for your service.
+        s = socket.socket() 
+        host = socket.gethostname()  
+        port = 60002  
         s.connect((host, port))
         recfile = input()
         s.send(str.encode(recfile))
@@ -76,11 +69,9 @@ class Client():
                     print('receiving data...')
                     data = s.recv(1024)
                     totalRecv += len(data)
-                    # print(('data=%s', (data)))
                     print("{0:.2f}".format((totalRecv / float(filesize)) * 100) + "% Done")
                     if not data:
                         break
-                    # write data to a file
                     f.write(data)
 
             f.close()
