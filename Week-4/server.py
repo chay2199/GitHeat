@@ -1,18 +1,17 @@
-# server.py
 import os
-import socket                   # Import socket module
+import socket                  
 
 class Server():
 
     def sendFile(self):
-        port = 60001  # Reserve a port for your service.
-        s = socket.socket()  # Create a socket object
-        host = socket.gethostname()  # Get local machine name
-        s.bind((host, port))  # Bind to the port
-        s.listen(1)  # Now wait for client connection.
+        port = 60001  
+        s = socket.socket() 
+        host = socket.gethostname() 
+        s.bind((host, port)) 
+        s.listen(1)  
         print('Server is ready!!')
         while True:
-            (conn, addr) = s.accept()     # Establish connection with client.
+            (conn, addr) = s.accept()     
             print('Got connection from', addr)
             try:
                 pathName = os.getcwd()
@@ -41,15 +40,15 @@ class Server():
             conn.close()
             print('Server directory information sent!!')
 
-            port = 60002  # Reserve a port for your service.
-            s = socket.socket()  # Create a socket object
-            host = socket.gethostname()  # Get local machine name
-            s.bind((host, port))  # Bind to the port
-            s.listen(1)  # Now wait for client connection.
+            port = 60002  
+            s = socket.socket()  
+            host = socket.gethostname()  
+            s.bind((host, port))  
+            s.listen(1)  
 
             print('Sending file....')
             while True:
-                (conn, addr) = s.accept()     # Establish connection with client.
+                (conn, addr) = s.accept()     
                 file = conn.recv(1024)
                 filename = file.decode('utf-8')
                 if os.path.isfile(filename):
