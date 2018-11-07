@@ -1,3 +1,5 @@
+# Disk Analyser
+
 This disk space analyser uses packages like os, sys, platform, ctypes, psutil, matplotlib, win32api etc.
 It provides the following features:
 1) Moving from one directory to other.
