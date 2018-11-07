@@ -1,3 +1,5 @@
+#MAZERUNNER
+
 This game 'MazeRunner' is based on the famous game Pacman. The script is written n python and uses modules like:
 1) pygame
 2) randint
@@ -9,7 +11,7 @@ The instructions are pretty simple use the following keys to collect all the coi
 2) Right arrow key/ a key to move right
 3) Up arrow key/ w key to move upwards
 4) Down arrow key/ s key to move downwards
-#############################################
+
 
 Future improvements and promises:
 Currently the game consists of only two level with a poor search algorithms for the ghosts so that they can find you.
