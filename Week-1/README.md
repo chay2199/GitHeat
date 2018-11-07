@@ -1,5 +1,4 @@
-# GitHeat
-# Projects for summer
+# Train Scheduler
 This program uses modules like urllib, BeautifulSoup, Pandas, Selenium etc to find train schedules when user gives train number as an input.
 The train schedule includes the following information:
 1) Train Name
